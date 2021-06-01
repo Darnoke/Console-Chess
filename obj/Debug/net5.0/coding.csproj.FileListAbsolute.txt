@@ -1,0 +1,16 @@
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.exe
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.deps.json
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.runtimeconfig.json
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.runtimeconfig.dev.json
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.dll
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\ref\coding.dll
+C:\Users\Konrad\Documents\PO\project\coding\bin\Debug\net5.0\coding.pdb
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.csprojAssemblyReference.cache
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.AssemblyInfoInputs.cache
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.AssemblyInfo.cs
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.csproj.CoreCompileInputs.cache
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.dll
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\ref\coding.dll
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.pdb
+C:\Users\Konrad\Documents\PO\project\coding\obj\Debug\net5.0\coding.genruntimeconfig.cache
