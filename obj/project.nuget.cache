@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kuC+a1ptH48o5JqXYIZYpYvbxIrVq6Sz0h+MxRJAlRKV5FxfNeHmFhw1FcxrFunw5saYLfhb+rulhQD7NBybbg==",
+  "dgSpecHash": "0rlt85DS6o4smj4VbtvD288g3aY6kxRAnWDfZZj3nHE8yjytYWtM6gryXDSrMQsinsxP7C+ceLfTPVHiF0rscA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\coding.csproj",
+  "projectFilePath": "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\coding.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

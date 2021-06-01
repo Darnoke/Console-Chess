@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\coding.csproj": {}
+    "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\coding.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\coding.csproj": {
+    "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\coding.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\coding.csproj",
+        "projectUniqueName": "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\coding.csproj",
         "projectName": "coding",
-        "projectPath": "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\coding.csproj",
+        "projectPath": "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\coding.csproj",
         "packagesPath": "C:\\Users\\Konrad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Konrad\\Documents\\PO\\project\\coding\\obj\\",
+        "outputPath": "C:\\Users\\Konrad\\Documents\\PO\\project\\Console-Chess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Konrad\\AppData\\Roaming\\NuGet\\NuGet.Config"

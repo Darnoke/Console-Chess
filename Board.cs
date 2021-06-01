@@ -294,6 +294,38 @@ namespace coding
                     return 'e';
                 }
                 chessboard[to_x, to_y].moved = true;
+                if(chessboard[to_x, to_y].type == 'p' && to_x == 7 || to_x == 0)
+                {
+                    do
+                    {
+                        Console.Write("Promocja pionka(Q, R, K, B): ");
+                        string inp = Console.ReadLine();
+                        if(inp.Length == 1 && (inp[0] == 'Q' || inp[0] == 'R' || inp[0] == 'K' || inp[0] == 'B'))
+                        {
+                            if(inp[0] == 'Q')
+                            {
+                                chessboard[to_x, to_y] = new Quenn(color);
+                                chessboard[to_x, to_y].moved = true;
+                            }
+                            if(inp[0] == 'R')
+                            {
+                                chessboard[to_x, to_y] = new Rook(color);
+                                chessboard[to_x, to_y].moved = true;
+                            }
+                            if(inp[0] == 'K')
+                            {
+                                chessboard[to_x, to_y] = new Knight(color);
+                                chessboard[to_x, to_y].moved = true;
+                            }
+                            if(inp[0] == 'B')
+                            {
+                                chessboard[to_x, to_y] = new Bishop(color);
+                                chessboard[to_x, to_y].moved = true;
+                            }
+                        }
+                        else Console.WriteLine("Błąd zapisu, spróbuj jeszcze raz");
+                    }while(chessboard[to_x, to_y].type == 'p');
+                }
                 char opponent;
                 if(color == 'W') opponent = 'B';
                 else opponent = 'W';
