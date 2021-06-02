@@ -98,7 +98,7 @@ namespace coding
             Figure from = chessboard[from_x, from_y];
             Figure to = chessboard[to_x, to_y];
             if(from == null || (to != null && to.color == from.color)) return false;
-            if(from.type == 'p')
+            if(from.type == 'p') // Pawn
             {
                 if(from.color == 'W' && to_x - from_x == 1 || (from.moved == false && to_x - from_x == 2))
                 {
@@ -132,6 +132,109 @@ namespace coding
                 }
                 return false;
             }
+            else if(from.type == 'K' && from.moved == false && Math.Abs(from_y - to_y) == 2) //Castles
+            {
+                if(from.color == 'W')
+                {
+                    if(to_y == 6 && chessboard[0, 7] != null && chessboard[0, 7].moved == false && chessboard[0, 6] == null && chessboard[0, 5] == null)
+                    {
+                        if(!is_check(from.color))
+                        {
+                            chessboard[0, 5] = from;
+                            chessboard[0, 4] = null;
+                            if(!is_check(from.color))
+                            {
+                                chessboard[0, 6] = from;
+                                chessboard[0, 5] = null;
+                                if(!is_check(from.color))
+                                {
+                                    chessboard[0, 4] = from;
+                                    chessboard[0, 5] = null;
+                                    chessboard[0, 6] = null;
+                                    return true;
+                                }
+                                chessboard[0, 6] = null;
+                            }
+                            chessboard[0, 4] = from;
+                            chessboard[0, 5] = null;
+                        }
+                    }
+                    else if(to_y == 2 && chessboard[0, 0] != null && chessboard[0, 0].moved == false && chessboard[0, 1] == null && chessboard[0, 2] == null && chessboard[0, 3] == null)
+                    {
+                        if(!is_check(from.color))
+                        {
+                            chessboard[0, 3] = from;
+                            chessboard[0, 4] = null;
+                            if(!is_check(from.color))
+                            {
+                                chessboard[0, 2] = from;
+                                chessboard[0, 3] = null;
+                                if(!is_check(from.color))
+                                {
+                                    chessboard[0, 4] = from;
+                                    chessboard[0, 2] = null;
+                                    chessboard[0, 3] = null;
+                                    return true;
+                                }
+                                chessboard[0, 2] = null;
+                            }
+                            chessboard[0, 4] = from;
+                            chessboard[0, 3] = null;
+                        }
+                    }
+                }
+                else
+                {
+                    if(to_y == 6 && chessboard[7, 7] != null && chessboard[7, 7].moved == false && chessboard[7, 6] == null && chessboard[7, 5] == null)
+                    {
+                        if(!is_check(from.color))
+                        {
+                            chessboard[7, 5] = from;
+                            chessboard[7, 4] = null;
+                            if(!is_check(from.color))
+                            {
+                                chessboard[7, 6] = from;
+                                chessboard[7, 5] = null;
+                                if(!is_check(from.color))
+                                {
+                                    chessboard[7, 4] = from;
+                                    chessboard[7, 5] = null;
+                                    chessboard[7, 6] = null;
+                                    return true;
+                                }
+                                chessboard[7, 6] = null;
+                            }
+                            chessboard[7, 4] = from;
+                            chessboard[7, 5] = null;
+                        }
+                    }
+                    else if(to_y == 2 && chessboard[7, 0] != null && chessboard[7, 0].moved == false && chessboard[7, 1] == null && chessboard[7, 2] == null && chessboard[7, 3] == null)
+                    {
+                        if(!is_check(from.color))
+                        {
+                            chessboard[7, 3] = from;
+                            chessboard[7, 4] = null;
+                            if(!is_check(from.color))
+                            {
+                                chessboard[7, 2] = from;
+                                chessboard[7, 3] = null;
+                                if(!is_check(from.color))
+                                {
+                                    chessboard[7, 4] = from;
+                                    chessboard[7, 2] = null;
+                                    chessboard[7, 3] = null;
+                                    return true;
+                                }
+                                chessboard[7, 2] = null;
+                            }
+                            chessboard[7, 4] = from;
+                            chessboard[7, 3] = null;
+                        }
+                    }
+                }
+                return false;
+            }
+
             else
             {
                 char move_type = 'n';
@@ -294,7 +397,40 @@ namespace coding
                     return 'e';
                 }
                 chessboard[to_x, to_y].moved = true;
-                if(chessboard[to_x, to_y].type == 'p' && to_x == 7 || to_x == 0)
+                if(chessboard[to_x, to_y].type == 'K' && Math.Abs(to_y - from_y) == 2) // castles
+                {
+                    if(color == 'W')
+                    {
+                        if(to_y == 6)
+                        {
+                            chessboard[0, 5] = chessboard[0, 7];
+                            chessboard[0, 5].moved = true;
+                            chessboard[0, 7] = null;
+                        }
+                        else
+                        {
+                            chessboard[0, 3] = chessboard[0, 0];
+                            chessboard[0, 3].moved = true;
+                            chessboard[0, 0] = null;
+                        }
+                    }
+                    else
+                    {
+                        if(to_y == 6)
+                        {
+                            chessboard[7, 5] = chessboard[7, 7];
+                            chessboard[7, 5].moved = true;
+                            chessboard[7, 7] = null;
+                        }
+                        else
+                        {
+                            chessboard[7, 3] = chessboard[7, 0];
+                            chessboard[7, 3].moved = true;
+                            chessboard[7, 0] = null;
+                        }
+                    }
+                }
+                if(chessboard[to_x, to_y].type == 'p' && (to_x == 7 || to_x == 0))
                 {
                     do
                     {
