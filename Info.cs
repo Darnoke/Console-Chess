@@ -16,7 +16,7 @@ namespace coding
         {
             string color = "Biały"; 
             if(c == 'W') color = "Czarny"; // reversed
-            Console.WriteLine("Szachmat! Wygrywa gracz " + color);
+            Console.WriteLine("Szach mat! Wygrywa gracz " + color);
         }
         public void error(string e)
         {

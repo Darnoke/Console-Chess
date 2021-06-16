@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 
 namespace coding
 {
@@ -31,6 +30,180 @@ namespace coding
             chessboard[7, 5]= new Bishop('B');
             chessboard[7, 6]= new Knight('B');
             chessboard[7, 7]= new Rook('B');
+        }
+
+        public Board(string code)
+        {
+            for(int i = 0; i < 64; i++)
+            {
+                switch(code[i])
+                {
+                    case ' ':
+                        chessboard[i / 8 , i % 8] = null;
+                        break;
+                    case 'a':
+                        chessboard[i / 8 , i % 8] = new Pawn('W');
+                        break;
+                    case 'b':
+                        chessboard[i / 8 , i % 8] = new Pawn('W');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'c':
+                        chessboard[i / 8 , i % 8] = new King('W');
+                        break;
+                    case 'd':
+                        chessboard[i / 8 , i % 8] = new King('W');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'e':
+                        chessboard[i / 8 , i % 8] = new Rook('W');
+                        break;
+                    case 'f':
+                        chessboard[i / 8 , i % 8] = new Rook('W');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'g':
+                        chessboard[i / 8 , i % 8] = new Knight('W');
+                        break;
+                    case 'h':
+                        chessboard[i / 8 , i % 8] = new Bishop('W');
+                        break;
+                    case 'i':
+                        chessboard[i / 8 , i % 8] = new Quenn('W');
+                        break;
+                    case 'j':
+                        chessboard[i / 8 , i % 8] = new Pawn('B');
+                        break;
+                    case 'k':
+                        chessboard[i / 8 , i % 8] = new Pawn('B');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'l':
+                        chessboard[i / 8 , i % 8] = new King('B');
+                        break;
+                    case 'm':
+                        chessboard[i / 8 , i % 8] = new King('B');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'n':
+                        chessboard[i / 8 , i % 8] = new Rook('B');
+                        break;
+                    case 'o':
+                        chessboard[i / 8 , i % 8] = new Rook('B');
+                        chessboard[i / 8 , i % 8].moved = true;
+                        break;
+                    case 'p':
+                        chessboard[i / 8 , i % 8] = new Knight('B');
+                        break;
+                    case 'q':
+                        chessboard[i / 8 , i % 8] = new Bishop('B');
+                        break;
+                    case 'r':
+                        chessboard[i / 8 , i % 8] = new Quenn('B');
+                        break;
+
+                }
+            }
+        }
+        public string get_code()
+        {
+            string ret = "";
+            for(int i = 0; i < 64; i++)
+            {
+                if(chessboard[i / 8 , i % 8] == null)
+                { 
+                    ret += ' ';
+                    continue;
+                }
+                switch(chessboard[i / 8 , i % 8].type)
+                {
+                    case 'p':
+                        if(chessboard[i / 8 , i % 8].color == 'W')
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'b';
+                            }
+                            else
+                            {
+                                ret += 'a';
+                            }
+                        }
+                        else
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'k';
+                            }
+                            else 
+                            {
+                                ret += 'j';
+                            }
+                        }
+                        break;
+                    case 'K':
+                        if(chessboard[i / 8 , i % 8].color == 'W')
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'd';
+                            }
+                            else
+                            {
+                                ret += 'c';
+                            }
+                        }
+                        else
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'm';
+                            }
+                            else 
+                            {
+                                ret += 'l';
+                            }
+                        }
+                        break;
+                    case 'r':
+                        if(chessboard[i / 8 , i % 8].color == 'W')
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'f';
+                            }
+                            else
+                            {
+                                ret += 'e';
+                            }
+                        }
+                        else
+                        {
+                            if(chessboard[i / 8 , i % 8].moved)
+                            {
+                                ret += 'o';
+                            }
+                            else 
+                            {
+                                ret += 'n';
+                            }
+                        }
+                        break;
+                    case 'k':
+                        if(chessboard[i / 8 , i % 8].color == 'W') ret += 'g';
+                        else ret += 'p';
+                        break;
+                    case 'b':
+                        if(chessboard[i / 8 , i % 8].color == 'W') ret += 'h';
+                        else ret += 'q';
+                        break;
+                    case 'q':
+                        if(chessboard[i / 8 , i % 8].color == 'W') ret += 'i';
+                        else ret += 'r';
+                        break;
+                }
+            }
+            return ret;
         }
 
         public void update_view()
@@ -381,99 +554,96 @@ namespace coding
         }
         public char make_move(Tuple<Tuple<int, int>, Tuple<int, int>> move, char color)
         {
-            if(correct_move(move))
+            if(!correct_move(move)) return 'e';
+            int from_x = move.Item1.Item1;
+            int from_y = move.Item1.Item2;
+            int to_x = move.Item2.Item1;
+            int to_y = move.Item2.Item2;
+            Figure tmp = chessboard[to_x, to_y];
+            chessboard[to_x, to_y] = chessboard[from_x, from_y]; 
+            chessboard[from_x, from_y] = null; 
+            if(is_check(color))
             {
-                int from_x = move.Item1.Item1;
-                int from_y = move.Item1.Item2;
-                int to_x = move.Item2.Item1;
-                int to_y = move.Item2.Item2;
-                Figure tmp = chessboard[to_x, to_y];
-                chessboard[to_x, to_y] = chessboard[from_x, from_y]; 
-                chessboard[from_x, from_y] = null; 
-                if(is_check(color))
+                chessboard[from_x, from_y] = chessboard[to_x, to_y];
+                chessboard[to_x, to_y] = tmp;
+                return 'e';
+            }
+            chessboard[to_x, to_y].moved = true;
+            if(chessboard[to_x, to_y].type == 'K' && Math.Abs(to_y - from_y) == 2) // castles
+            {
+                if(color == 'W')
                 {
-                    chessboard[from_x, from_y] = chessboard[to_x, to_y];
-                    chessboard[to_x, to_y] = tmp;
-                    return 'e';
-                }
-                chessboard[to_x, to_y].moved = true;
-                if(chessboard[to_x, to_y].type == 'K' && Math.Abs(to_y - from_y) == 2) // castles
-                {
-                    if(color == 'W')
+                    if(to_y == 6)
                     {
-                        if(to_y == 6)
-                        {
-                            chessboard[0, 5] = chessboard[0, 7];
-                            chessboard[0, 5].moved = true;
-                            chessboard[0, 7] = null;
-                        }
-                        else
-                        {
-                            chessboard[0, 3] = chessboard[0, 0];
-                            chessboard[0, 3].moved = true;
-                            chessboard[0, 0] = null;
-                        }
+                        chessboard[0, 5] = chessboard[0, 7];
+                        chessboard[0, 5].moved = true;
+                        chessboard[0, 7] = null;
                     }
                     else
                     {
-                        if(to_y == 6)
-                        {
-                            chessboard[7, 5] = chessboard[7, 7];
-                            chessboard[7, 5].moved = true;
-                            chessboard[7, 7] = null;
-                        }
-                        else
-                        {
-                            chessboard[7, 3] = chessboard[7, 0];
-                            chessboard[7, 3].moved = true;
-                            chessboard[7, 0] = null;
-                        }
+                        chessboard[0, 3] = chessboard[0, 0];
+                        chessboard[0, 3].moved = true;
+                        chessboard[0, 0] = null;
                     }
                 }
-                if(chessboard[to_x, to_y].type == 'p' && (to_x == 7 || to_x == 0))
+                else
                 {
-                    do
+                    if(to_y == 6)
                     {
-                        Console.Write("Promocja pionka(Q, R, K, B): ");
-                        string inp = Console.ReadLine();
-                        if(inp.Length == 1 && (inp[0] == 'Q' || inp[0] == 'R' || inp[0] == 'K' || inp[0] == 'B'))
-                        {
-                            if(inp[0] == 'Q')
-                            {
-                                chessboard[to_x, to_y] = new Quenn(color);
-                                chessboard[to_x, to_y].moved = true;
-                            }
-                            if(inp[0] == 'R')
-                            {
-                                chessboard[to_x, to_y] = new Rook(color);
-                                chessboard[to_x, to_y].moved = true;
-                            }
-                            if(inp[0] == 'K')
-                            {
-                                chessboard[to_x, to_y] = new Knight(color);
-                                chessboard[to_x, to_y].moved = true;
-                            }
-                            if(inp[0] == 'B')
-                            {
-                                chessboard[to_x, to_y] = new Bishop(color);
-                                chessboard[to_x, to_y].moved = true;
-                            }
-                        }
-                        else Console.WriteLine("Błąd zapisu, spróbuj jeszcze raz");
-                    }while(chessboard[to_x, to_y].type == 'p');
+                        chessboard[7, 5] = chessboard[7, 7];
+                        chessboard[7, 5].moved = true;
+                        chessboard[7, 7] = null;
+                    }
+                    else
+                    {
+                        chessboard[7, 3] = chessboard[7, 0];
+                        chessboard[7, 3].moved = true;
+                        chessboard[7, 0] = null;
+                    }
                 }
-                char opponent;
-                if(color == 'W') opponent = 'B';
-                else opponent = 'W';
-                if(is_check(opponent))
-                {
-                    if(can_move(opponent)) return 'm';
-                    return 'c';
-                }
-                else if(can_move(opponent)) return 's';
-                return 'g';
             }
-            return 'e';
+            if(chessboard[to_x, to_y].type == 'p' && (to_x == 7 || to_x == 0))
+            {
+                do
+                {
+                    Console.Write("Promocja pionka(Q, R, K, B): ");
+                    string inp = Console.ReadLine();
+                    if(inp.Length == 1 && (inp[0] == 'Q' || inp[0] == 'R' || inp[0] == 'K' || inp[0] == 'B'))
+                    {
+                        if(inp[0] == 'Q')
+                        {
+                            chessboard[to_x, to_y] = new Quenn(color);
+                            chessboard[to_x, to_y].moved = true;
+                        }
+                        if(inp[0] == 'R')
+                        {
+                            chessboard[to_x, to_y] = new Rook(color);
+                            chessboard[to_x, to_y].moved = true;
+                        }
+                        if(inp[0] == 'K')
+                        {
+                            chessboard[to_x, to_y] = new Knight(color);
+                            chessboard[to_x, to_y].moved = true;
+                        }
+                        if(inp[0] == 'B')
+                        {
+                            chessboard[to_x, to_y] = new Bishop(color);
+                            chessboard[to_x, to_y].moved = true;
+                        }
+                    }
+                    else Console.WriteLine("Błąd zapisu, spróbuj jeszcze raz");
+                }while(chessboard[to_x, to_y].type == 'p');
+            }
+            char opponent;
+            if(color == 'W') opponent = 'B';
+            else opponent = 'W';
+            if(is_check(opponent))
+            {
+                if(can_move(opponent)) return 'm';
+                return 'c';
+            }
+            else if(can_move(opponent)) return 's';
+            return 'g';
         }
     }
 }

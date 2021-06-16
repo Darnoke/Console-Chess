@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace coding
 {
@@ -6,7 +7,10 @@ namespace coding
     {
         public Controller()
         {
-            new_game();
+            Console.WriteLine("Jeśli chcesz wczytać gre podaj jej kod (puste aby pominac): ");
+            string inp = Console.ReadLine();
+            if(inp == "") new_game();
+            else new_game(inp);
         }
         Player white, black;
         Info output;
@@ -18,10 +22,62 @@ namespace coding
             white = new Player('W');
             black = new Player('B');
             output = new Info();
-            chessboard = new Board();
+            chessboard = new Board("eghichgeaaaaaaaa                                jjjjjjjjnpqrlqpn");
             effect = 'n';
             turn = 'W';
             play();
+        }
+        public void new_game(string code)
+        {
+            white = new Player('W');
+            black = new Player('B');
+            output = new Info();
+            effect = 'n';
+            read_game(code);
+            play();
+        }
+
+        private void read_game(string code)
+        {
+            // a - white pawn
+            // b - white moved pawn
+            // c - white king
+            // d - white moved king
+            // e - white rook
+            // f - white moved rook
+            // g - white knight
+            // h - white bishop
+            // i - white queen
+            // space - empty
+            // rest is for black the same
+            if(code.Length != 65) throw new ArgumentException("zły format wejscia");
+
+            bool white_king = false;
+            bool black_king = false;
+
+            char[] allowed_chars = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', ' '};
+            for(int i = 1; i < 65; i++)
+            {
+                if(!allowed_chars.Contains(code[i]))
+                {
+                    throw new ArgumentException("zły format wejscia");
+                }
+                if(code[i] == 'c' || code[i] == 'd')
+                {
+                    if(white_king) throw new ArgumentException("2 królów tego samego koloru");
+                    white_king = true;
+                }
+                if(code[i] == 'l' || code[i] == 'm')
+                {
+                    if(black_king) throw new ArgumentException("2 królów tego samego koloru");
+                    black_king = true;
+                }
+            }
+
+            if(code[0] == 'W') turn = 'W';
+            else turn = 'B';
+
+            chessboard = new Board(code.Substring(1));
         }
 
         private void play()
@@ -52,6 +108,11 @@ namespace coding
                 if(move == null)
                 {
                     output.error("zła notacja");
+                    effect = 'n';
+                }
+                else if(move.Item1 == null)
+                {
+                    Console.WriteLine(turn + chessboard.get_code());
                     effect = 'n';
                 }
                 else effect = chessboard.make_move(move, turn);

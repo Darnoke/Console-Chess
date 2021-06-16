@@ -18,6 +18,7 @@ namespace coding
             char[] allowed_chars = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
             char[] allowed_nums = new char[] {'1', '2', '3', '4', '5', '6', '7', '8'};
             string inp = Console.ReadLine();
+            if(inp == "save") return new Tuple<Tuple<int, int>, Tuple<int, int>>(null, null);
             if(inp.Length != 5 || inp[2] != ' ' || !allowed_chars.Contains(inp[0]) || !allowed_chars.Contains(inp[3])
                                                 || !allowed_nums.Contains(inp[1])  || !allowed_nums.Contains(inp[4])) return null;
             int fst = inp[0] - 96;
