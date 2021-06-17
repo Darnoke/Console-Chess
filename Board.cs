@@ -38,7 +38,7 @@ namespace coding
             {
                 switch(code[i])
                 {
-                    case ' ':
+                    case '.':
                         chessboard[i / 8 , i % 8] = null;
                         break;
                     case 'a':
@@ -112,7 +112,7 @@ namespace coding
             {
                 if(chessboard[i / 8 , i % 8] == null)
                 { 
-                    ret += ' ';
+                    ret += '.';
                     continue;
                 }
                 switch(chessboard[i / 8 , i % 8].type)

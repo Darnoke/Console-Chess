@@ -22,7 +22,7 @@ namespace coding
             white = new Player('W');
             black = new Player('B');
             output = new Info();
-            chessboard = new Board("eghichgeaaaaaaaa                                jjjjjjjjnpqrlqpn");
+            chessboard = new Board("eghichgeaaaaaaaa................................jjjjjjjjnpqrlqpn");
             effect = 'n';
             turn = 'W';
             play();
@@ -48,14 +48,14 @@ namespace coding
             // g - white knight
             // h - white bishop
             // i - white queen
-            // space - empty
+            // . - empty
             // rest is for black the same
             if(code.Length != 65) throw new ArgumentException("zły format wejscia");
 
             bool white_king = false;
             bool black_king = false;
 
-            char[] allowed_chars = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', ' '};
+            char[] allowed_chars = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', '.'};
             for(int i = 1; i < 65; i++)
             {
                 if(!allowed_chars.Contains(code[i]))
